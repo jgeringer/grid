@@ -11,10 +11,8 @@ h1, h2{
 .FlexGrid{
     display: grid;
     
-    /*grid-template-columns: [col] 334px [col] 334px [col] 334px;*/
-    grid-template-columns: repeat(3, 334px [col]);
+    grid-template-columns: repeat(auto-fit, minmax(334px, 1fr));
     
-    /*grid-template-rows: repeat(20, 245px [row]);*/
     grid-auto-rows: 245px;
 
     grid-gap:10px 10px;
@@ -22,6 +20,8 @@ h1, h2{
     justify-content:center;
 
     overflow:hidden;
+
+    grid-auto-flow: dense;
 }
 
 .FlexGrid-item{
@@ -35,6 +35,11 @@ h1, h2{
     font-size: 1rem;
 }
 
+@media only screen and (max-width:657px) {
+    .FlexGrid-item{
+        grid-row: auto / auto !important;
+    }
+}
 
 .FlexGrid-item--1x2{
     grid-row: auto / span 2;
